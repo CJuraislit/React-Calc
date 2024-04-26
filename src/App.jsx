@@ -53,12 +53,45 @@ function App() {
     );
   }
 
+  function InputCalc(props) {
+    const [result, setResult] = useState("");
+    const [counts, setCounts] = useState("");
+
+    function updateCounts(e) {
+      const expressions = /[0-9]|\)/;
+      const lastNumber = e.target.value[e.target.value.length - 2];
+
+      if (!expressions.test(lastNumber) && !expressions.test(e.nativeEvent.data) && e.nativeEvent.data != null) return;
+      if (expressions.test(e.nativeEvent.data)) setResult(eval(e.target.value));
+      setCounts(e.target.value);
+
+      if (!expressions.test(lastNumber)) return;
+      else setResult(eval(e.target.value));
+    }
+
+    return (
+      <div className="line--container">
+        <input
+          type="text"
+          value={counts}
+          onChange={(e) => {
+            updateCounts(e);
+          }}
+        />
+        <p>{result}</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="main--container">
         <div className="input--container">
-          <p className="input--line">{counts}</p>
-          <p className="result--line">{"=" + result}</p>
+          <InputCalc />
+          <div className="input--container--old">
+            <p className="input--line">{counts}</p>
+            <p className="result--line">{"=" + result}</p>
+          </div>
         </div>
         <div className="button--container">
           <div className="numbers--container">
