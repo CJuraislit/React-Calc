@@ -43,6 +43,7 @@ function App() {
 
     return (
       <button
+        className="expression--button"
         onClick={() => {
           checkExpressionType();
         }}
@@ -66,12 +67,15 @@ function App() {
               AC
             </button>
           </div>
-          <div className="expressin--container">
+          <div className="expression--container">
             <CountButton data={counts} expression={"+"} onClick={applyExpression} />
             <CountButton data={counts} expression={"-"} onClick={applyExpression} />
             <CountButton data={counts} expression={"*"} onClick={applyExpression} />
             <CountButton data={counts} expression={"/"} onClick={applyExpression} />
           </div>
+          <button className="result--button" onClick={() => setResult(eval(counts))}>
+            =
+          </button>
         </div>
       </div>
     </>

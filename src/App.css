@@ -52,7 +52,17 @@ button {
   flex-wrap: wrap;
 }
 
-.expressin--container {
+.expression--container {
   display: flex;
   flex-direction: column;
+}
+
+.expression--button {
+  color: #1a1a1a;
+  background-color: #1ba7f7;
+}
+
+.result--button {
+  color: #1a1a1a;
+  background-color: tomato;
 }
